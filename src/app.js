@@ -3,6 +3,7 @@ const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const helmet = require('helmet')
+const appRouter = require('./routes/app')
 const { info, error } = require('./utils/logger')
 const { MONGO_URI } = require('./utils/config')
 
@@ -15,7 +16,7 @@ app.use(helmet())
 app.use(cors())
 
 app.get('/', (req, res) => {
-  res.json({ message: 'Society admin API' })
+  res.json({ message: 'Society admin API, Access unauthorized' })
 })
 
 info('Connecting to database...', MONGO_URI)
@@ -27,5 +28,7 @@ mongoose
   .catch(exception => {
     error('Error connecting to MongoDB:', exception.message)
   })
+
+app.use('/api', appRouter())
 
 module.exports = app

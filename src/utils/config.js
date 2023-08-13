@@ -6,7 +6,10 @@ const MONGO_URI =
     ? process.env.DEV_MONGO_URI
     : process.env.MONGODB_URI
 
+const JWT_SECRET = process.env.JWT_SECRET
+
 module.exports = {
   MONGO_URI,
   PORT,
+  JWT_SECRET,
 }
