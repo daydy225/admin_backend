@@ -29,11 +29,10 @@ const adminLogin = async (req, res) => {
 const tokenExist = async (req, res) => {
   try {
     const token = req.token
-    console.log(token)
     const result = await verifyToken(token)
     if (result.verified !== true)
       return res.status(401).json({ success: false })
-    res.json({ success: true })
+    res.json({ success: true, user: result.user })
   } catch (error) {
     res
       .status(error.status || 500)

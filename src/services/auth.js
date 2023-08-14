@@ -78,7 +78,7 @@ const verifyToken = async token => {
     if (!user) {
       throw { status: 401, message: 'Invalid token' }
     }
-    return { verified: true }
+    return { verified: true, user }
   } catch (error) {
     throw { status: error?.status || 500, message: error?.message }
   }
