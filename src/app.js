@@ -15,11 +15,7 @@ app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }))
 app.use(cors())
 app.use(helmet())
 
-app.use(express.static('dist'))
-
-app.get('/', (req, res) => {
-  res.json({ message: 'Society admin API, Access unauthorized' })
-})
+// app.use(express.static('dist'))
 
 info('Connecting to database...', MONGO_URI)
 mongoose

@@ -1,4 +1,5 @@
-POST http://127.0.0.1:3000/api/auth/admin-login
+# POST http://127.0.0.1:3000/api/auth/admin-login
+POST https://admin-backend-society.fly.dev/api/auth/admin-login
 Content-Type: application/json
 
 {

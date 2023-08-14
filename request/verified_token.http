@@ -1,3 +1,5 @@
-GET http://127.0.0.1:3000/api/auth/verify-token
+# GET http://127.0.0.1:3000/api/auth/verify-token
+GET https://admin-backend-society.fly.dev/api/auth/verify-token
+
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZDgxYTU2NjVlZDU2NWI5NDc1MTlkZCIsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2OTE5ODk0NjcsImV4cCI6MTY5MTk5MzA2N30.DJWLhDfw8BXnc6lrKvMq8nhxhZMECZCjCA-OXHwLYuU
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0ZDljYzgyNjNmMDU3MmU2NDJmMjhmZSIsInVzZXJuYW1lIjoiYWRtaW4iLCJpYXQiOjE2OTE5OTUzOTcsImV4cCI6MTY5MTk5ODk5N30.k1VFHGSOp4MtVhl4axBBBJiog_KQY5vobZy6Jzmk5dQ
