@@ -10,8 +10,8 @@ const adminRegister = async (req, res) => {
     res.json({ success: true, result })
   } catch (error) {
     res
-      .status(error.status || 500)
-      .send({ success: false, message: error.message || error })
+      .status(error?.status || 500)
+      .send({ success: false, message: error?.message || error })
   }
 }
 
@@ -21,30 +21,24 @@ const adminLogin = async (req, res) => {
     res.json({ success: true, result })
   } catch (error) {
     res
-      .status(error.status || 500)
-      .send({ success: false, message: error.message || error })
+      .status(error?.status || 500)
+      .send({ success: false, message: error?.message || error })
   }
 }
 
 const tokenExist = async (req, res) => {
+  const user = req.user
+
   try {
-    const token = req.token
-    const result = await verifyToken(token)
-    if (result.verified !== true)
-      return res.status(401).json({ success: false })
-    res.json({ success: true, user: result.user })
+    const result = await verifyToken(user)
+
+    res.json({ success: true, user: result.data })
   } catch (error) {
     res
-      .status(error.status || 500)
-      .send({ success: false, message: error.message || error })
+      .status(error?.status || 500)
+      .send({ success: false, message: error?.message || error })
   }
 }
-
-// const getAdmin = async (req, res) => {
-//   const { id } = req.params
-//   const result = await getAdmin(id)
-//   res.json({ success: true, result })
-// }
 
 module.exports = {
   adminRegister,

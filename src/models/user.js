@@ -4,6 +4,7 @@ const joi = require('joi')
 const userSchema = mongoose.Schema({
   username: String,
   fullname: String,
+  phone: String,
   email: String,
   password: {
     type: String,
@@ -34,6 +35,8 @@ const User = mongoose.model('User', userSchema)
 const validateAdmin = user => {
   const userSchema = joi.object({
     username: joi.string().min(3).max(255).required(),
+    fullname: joi.string().min(3).max(255).required(),
+    // phone: joi.string().pattern(new RegExp('^[0-9]{10,12}$')).required(),
     email: joi.string().email().required(),
     password: joi
       .string()
