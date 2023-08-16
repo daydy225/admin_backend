@@ -33,7 +33,7 @@ const editAdmin = async (req, res) => {
         .send({ success: false, message: 'Edit admin failed' })
     }
 
-    res.status(200).send({ success: true, admin: result })
+    res.status(200).send({ success: true, result })
   } catch (error) {
     res
       .status(error?.status || 500)

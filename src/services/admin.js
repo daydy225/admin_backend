@@ -30,17 +30,13 @@ const updateAdmin = async (user, id, values = {}) => {
 
     if (!admin) throw { status: 404, message: 'Admin not found' }
 
-    const updatedAdmin = await User.findOneAndUpdate(
-      { _id: id },
-      { values, updated_at: Date.now() },
-      {
-        new: true,
-      },
-    ).select('-token -__v')
+    const { acknowledged } = await User.updateOne({ _id: admin._id }, [
+      { $set: values },
+    ])
 
-    if (!updatedAdmin) throw { status: 500, message: 'Error updating admin' }
-
-    return updatedAdmin
+    if (acknowledged) {
+      return { success: true, message: 'Admin updated successfully' }
+    }
   } catch (error) {
     throw { status: error?.status || 500, message: error?.message }
   }
