@@ -1,4 +1,5 @@
 const { findAllAdmins } = require('../services/admin')
+const { updateAdmin } = require('../services/admin')
 
 const fetchAdmins = async (req, res) => {
   try {
@@ -19,4 +20,25 @@ const fetchAdmins = async (req, res) => {
   }
 }
 
-module.exports = { fetchAdmins }
+const editAdmin = async (req, res) => {
+  try {
+    const user = req.user
+    const { id } = req.params
+
+    const result = await updateAdmin(user, id, req.body)
+
+    if (!result) {
+      return res
+        .status(error?.status || 404)
+        .send({ success: false, message: 'Edit admin failed' })
+    }
+
+    res.status(200).send({ success: true, admin: result })
+  } catch (error) {
+    res
+      .status(error?.status || 500)
+      .send({ success: false, message: error?.message || error })
+  }
+}
+
+module.exports = { fetchAdmins, editAdmin }

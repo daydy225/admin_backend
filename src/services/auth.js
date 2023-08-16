@@ -5,7 +5,7 @@ const { JWT_SECRET } = require('../utils/config')
 
 const registerAdmin = async (values = {}) => {
   try {
-    const { username, fullname, email, password, role } = values
+    const { username, fullname, email, phone, password, role } = values
     const existingAdmin = await User.findOne({
       username,
       role: { $in: ['admin', 'superadmin'] },
@@ -23,6 +23,7 @@ const registerAdmin = async (values = {}) => {
       password: passwordHash,
       role,
       email,
+      phone,
       created_at: new Date(),
     })
     const savedUser = await user.save()

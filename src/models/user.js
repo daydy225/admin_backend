@@ -36,7 +36,7 @@ const validateAdmin = user => {
   const userSchema = joi.object({
     username: joi.string().min(3).max(255).required(),
     fullname: joi.string().min(3).max(255).required(),
-    // phone: joi.string().pattern(new RegExp('^[0-9]{10,12}$')).required(),
+    phone: joi.string().pattern(new RegExp('^[0-9]{10,12}$')).required(),
     email: joi.string().email().required(),
     password: joi
       .string()
